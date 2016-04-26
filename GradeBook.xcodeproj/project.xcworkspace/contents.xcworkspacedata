@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:GradeBook.xcodeproj">
+      location = "self:/Users/ieuser/Desktop/CSE394/GradeBook/GradeBook.xcodeproj">
    </FileRef>
 </Workspace>

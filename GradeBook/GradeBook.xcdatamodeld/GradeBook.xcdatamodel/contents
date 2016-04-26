@@ -1,4 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Automatic">
+    <entity name="Course" representedClassName=".Course" syncable="YES">
+        <attribute name="categories" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="courseName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weightedGrade" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="semester" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Semester" inverseName="enrolledCourses" inverseEntity="Semester" syncable="YES"/>
+        <relationship name="workItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorkItem" inverseName="course" inverseEntity="WorkItem" syncable="YES"/>
+    </entity>
+    <entity name="Semester" representedClassName="Semester" syncable="YES">
+        <attribute name="semesterGpa" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="term" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="enrolledCourses" optional="YES" toMany="YES" maxCount="6" deletionRule="Nullify" destinationEntity="Course" inverseName="semester" inverseEntity="Course" syncable="YES"/>
+        <relationship name="student" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="semesters" inverseEntity="Student" syncable="YES"/>
+    </entity>
+    <entity name="Student" syncable="YES">
+        <attribute name="cumulativeGpa" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="major" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="semesters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Semester" inverseName="student" inverseEntity="Semester" syncable="YES"/>
+    </entity>
+    <entity name="WorkItem" representedClassName=".WorkItem" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itemName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pointsEarned" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="pointsPossible" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="workItems" inverseEntity="Course" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Course" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Semester" positionX="-36" positionY="9" width="128" height="105"/>
+        <element name="Student" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="WorkItem" positionX="-18" positionY="27" width="128" height="120"/>
+    </elements>
 </model>
