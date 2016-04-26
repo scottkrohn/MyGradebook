@@ -1,4 +1,5 @@
 # MyGradebook
-Grade tracking application for ASU Students.
+Grade tracking iOS application for ASU Students.
 
 By Scott Krohn, John Rabatin and Lazaro Ortiz.
+
